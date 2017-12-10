@@ -18,55 +18,49 @@ public class SQLQueries {
 	public static String countryCodeAsAf5 = "STP";
 	
 	//disel for all regions
-	public static String readAllData1 = "SELECT c.CountryCode, c.CountryName, cr.region, ROUND(AVG(dy.data), 2) AS 'US$ Per Liter of Disel', dy.yearc " + 
+	public static String readAllData1 = "SELECT c.CountryCode, c.CountryName, cr.region, dy.data AS 'US$ Per Liter of Disel', dy.yearc " +
 			"FROM country c NATURAL JOIN countryregion cr NATURAL JOIN databyyear dy NATURAL JOIN series s " +
 			"WHERE seriesCode in (\"EP.PMP.DESL.CD\") " +
 			"AND YearC IN(\"2012 [YR2012]\", \"2013 [YR2013]\",\"2014 [YR2014]\") " +
-			"GROUP BY countrycode " +
 			"ORDER BY region";
 
 	//gas for all regions
-	public static String readAllData2 = "SELECT c.CountryCode, c.CountryName, cr.region, ROUND(AVG(dy.data), 2) AS 'US$ Per Liter of Gas', dy.yearc " +
+	public static String readAllData2 = "SELECT c.CountryCode, c.CountryName, cr.region, dy.data AS 'US$ Per Liter of Gas', dy.yearc " +
 			"FROM country c NATURAL JOIN countryregion cr NATURAL JOIN databyyear dy NATURAL JOIN series s " +
 			"WHERE seriesCode in (\"EP.PMP.SGAS.CD\") " +
 			"AND YearC IN(\"2012 [YR2012]\", \"2013 [YR2013]\",\"2014 [YR2014]\") " +
-			"GROUP BY countrycode " +
 			"ORDER BY region";
 
 	//disel for europe
-	public static String readEuropeData1 = "SELECT c.CountryCode, c.CountryName, cr.region, ROUND(AVG(dy.data), 2) AS 'US$ Per Liter of Gas', dy.yearc " +
+	public static String readEuropeData1 = "SELECT c.CountryCode, c.CountryName, cr.region, dy.data AS 'US$ Per Liter of Gas', dy.yearc " +
 			"FROM country c NATURAL JOIN countryregion cr NATURAL JOIN databyyear dy NATURAL JOIN series s " +
 			"WHERE seriesCode in (\"EP.PMP.DESL.CD\") " +
 			"AND cr.region IN (\"Europe & Central Asia\", \"Latin America & Caribbean\", \"North America\") " +
 			"AND YearC IN(\"2012 [YR2012]\", \"2013 [YR2013]\",\"2014 [YR2014]\") " +
-			"GROUP BY countrycode " +
 			"ORDER BY region";
 
 	//gas for europe
-	public static String readEuropeData2 = "SELECT c.CountryCode, c.CountryName, cr.region, ROUND(AVG(dy.data), 2) AS 'US$ Per Liter of Gas', dy.yearc " +
+	public static String readEuropeData2 = "SELECT c.CountryCode, c.CountryName, cr.region, dy.data AS 'US$ Per Liter of Gas', dy.yearc " +
 			"FROM country c NATURAL JOIN countryregion cr NATURAL JOIN databyyear dy NATURAL JOIN series s " +
 			"WHERE seriesCode in (\"EP.PMP.SGAS.CD\") " +
 			"AND cr.region IN (\"Europe & Central Asia\", \"Latin America & Caribbean\", \"North America\") " +
 			"AND YearC IN(\"2012 [YR2012]\",\"2013 [YR2013]\",\"2014 [YR2014]\") " +
-			"GROUP BY countrycode " +
 			"ORDER BY region";
 
 	//disel for asia
-	public static String readAsiaData1 = "SELECT c.CountryCode, c.CountryName, cr.region, ROUND(AVG(dy.data), 2) AS 'US$ Per Liter of Gas', dy.seriescode " +
+	public static String readAsiaData1 = "SELECT c.CountryCode, c.CountryName, cr.region, dy.data AS 'US$ Per Liter of Gas', dy.seriescode " +
 			"FROM country c NATURAL JOIN countryregion cr NATURAL JOIN databyyear dy NATURAL JOIN series s " +
 			"WHERE seriesCode in (\"EP.PMP.DESL.CD\") " +
 			"AND cr.region IN (\"East Asia & Pacific\", \"Middle East & North Africa\", \"South Asia\", \"Sub-Saharan Africa\") " +
 			"AND YearC IN(\"2012 [YR2012]\", \"2013 [YR2013]\", \"2014 [YR2014]\") " +
-			"GROUP BY countrycode " +
 			"ORDER BY region";
 			
 	//gas for asia
-	public static String readAsiaData2 = "SELECT c.CountryCode, c.CountryName, cr.region, ROUND(AVG(dy.data), 2) AS 'US$ Per Liter of Gas', dy.seriescode " +
+	public static String readAsiaData2 = "SELECT c.CountryCode, c.CountryName, cr.region, dy.data AS 'US$ Per Liter of Gas', dy.seriescode " +
 			"FROM country c NATURAL JOIN countryregion cr NATURAL JOIN databyyear dy NATURAL JOIN series s " +
 			"WHERE seriesCode in (\"EP.PMP.DESL.CD\") " +
 			"AND cr.region IN (\"East Asia & Pacific\", \"Middle East & North Africa\", \"South Asia\", \"Sub-Saharan Africa\") " +
 			"AND YearC IN(\"2012 [YR2012]\", \"2013 [YR2013]\", \"2014 [YR2014]\") " +
-			"GROUP BY countrycode " +
 			"ORDER BY region";	
 	
 	
