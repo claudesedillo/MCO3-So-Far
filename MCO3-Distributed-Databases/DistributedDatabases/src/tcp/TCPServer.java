@@ -158,23 +158,24 @@ public class TCPServer extends Thread {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		   } else if (clientSentence.contains(Messages.QUERY_FOR_SELECT) || clientSentence.contains(Messages.QUERY_FOR_REPLICA)) {
-			   clientSentence = clientSentence.replaceAll(Messages.QUERY_FOR_SELECT, "");
+		   } else if (clientSentence.contains(Messages.QUERY_FOR_SELECT) || clientSentence.contains(Messages.QUERY_FOR_SELECT_REPLICA)) {
 			   System.out.println("Received for Select: " + clientSentence);
 			   
 			   try {
 					PreparedStatement pstmt = null;
 					
-					if (clientSentence.contains(Messages.QUERY_FOR_SELECT))
+					if (clientSentence.contains(Messages.QUERY_FOR_SELECT)) {
+						clientSentence = clientSentence.replaceAll(Messages.QUERY_FOR_SELECT, "");
 						pstmt = serversNode.getMainConnection().prepareStatement(clientSentence);
-					else
-						pstmt = serversNode.getReplicaConnection().prepareStatement(clientSentence);
+					} else{
+					   clientSentence = clientSentence.replaceAll(Messages.QUERY_FOR_SELECT_REPLICA, "");
+					   pstmt = serversNode.getReplicaConnection().prepareStatement(clientSentence);
+				   }
 					
 					ResultSet rs = pstmt.executeQuery();
 					
 					// Write rs to server
-					
-					
+
 					ArrayList <String[]> result = new ArrayList <String[]> ();
 					ResultSetMetaData metadata = rs.getMetaData();
 					
@@ -188,6 +189,8 @@ public class TCPServer extends Thread {
 						result.add(toPlace);
 				          
 					}
+
+				   System.out.println(result.size());
 					
 					//DataTransferObject dto = new DataTransferObject(rs);
 					

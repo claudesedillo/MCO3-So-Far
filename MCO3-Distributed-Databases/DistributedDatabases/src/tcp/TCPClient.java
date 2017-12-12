@@ -61,8 +61,8 @@ public class TCPClient {
 			
 		} catch (Exception e) {
 			System.out.println("Connection Timeout or Server Unreachable");
-			
-			input = input.replaceAll(Messages.QUERY_FOR_SELECT, Messages.QUERY_FOR_REPLICA);
+
+			input = input.replaceAll(Messages.QUERY_FOR_SELECT, Messages.QUERY_FOR_SELECT_REPLICA);
 			
 			System.out.println("FINDING REPLICA");
 			
